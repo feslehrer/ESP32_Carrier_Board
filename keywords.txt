@@ -15,3 +15,9 @@ DEBOUNCETIME 	KEYWORD1
 
 pinToggle	KEYWORD2
 
+
+######################################
+# Constants (LITERAL1)
+#######################################	
+esp32CarrierBoard LITERAL1
+
