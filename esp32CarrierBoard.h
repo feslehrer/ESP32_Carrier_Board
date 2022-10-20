@@ -6,16 +6,16 @@
     Datum:           20.10.2022
     letzte Änderung: 20.10.2022
 */
-
+#ifndef _ESP32CARRIERBOARD_H_
 #define _ESP32CARRIERBOARD_H_
+#include "Arduino.h"
 
 #define PRESS   LOW            // Symbol für gedrückten Taster
                                // LOW = Nullaktiv, HIGH = Einsaktiv                   
 #define DEBOUNCETIME 50        // Hier die Entprellzeit in ms
 
-int pins[] = {5,23,19,18};     // ESP32-Carrier-Board Tasterpins
-uint32_t debounceTimer[4];     // Muss mit der Anzahl der Tasterpins
-                               // übereinstimmen.
+#define TASTERPINS {5,23,19,18}     // Tasterpins am ESP32-Carrier-Board
+#define PINANZAHL   4               // muss mit der Anzahl der Tasterpins übereinstimmen.
 
 // Funktionsprototypen
 //--------------------------------------------------------------------
@@ -23,7 +23,7 @@ uint32_t debounceTimer[4];     // Muss mit der Anzahl der Tasterpins
 // liefert ein entprelltes Tastersignal zurück.
 // Die Variable toggleState muss als Zeiger übergeben werden und
 // kann als Schaltsignal ausgewertet werden. Im debounceTimer werden 
-// Impulsdauern gespeichert. Er muss ebenso als Zeiger übergeben werden.
+// Impulsdauern gespeichert.
 // Example: 
 //  #include <esp32CarrierBoard.h>
 //  uint32_t toggleStateS3;
@@ -43,6 +43,6 @@ uint32_t debounceTimer[4];     // Muss mit der Anzahl der Tasterpins
 //      count++;
 //    
 //  }
-bool pinToggle(int pin, bool *toggleState, uint32_t *debounceTimer); 
+bool pinToggle(int pin, bool *toggleState); 
 
 #endif
