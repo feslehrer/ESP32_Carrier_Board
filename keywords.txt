@@ -13,6 +13,5 @@ DEBOUNCETIME 	KEYWORD1
 # Methods and Functions (KEYWORD2)
 ###########################################
 
-pinToggle
-read	KEYWORD2
+pinToggle	KEYWORD2
 
