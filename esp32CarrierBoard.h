@@ -45,4 +45,30 @@
 //  }
 bool pinToggle(int pin, bool *toggleState); 
 
+
+
+// Pindefinitionen
+#define D0 9
+#define D1 10
+#define D2 14
+#define D3 4
+#define D4 33
+#define D5 15
+#define D6 13
+#define D7 32
+#define D8 2
+#define D9 27
+#define D10 5
+#define D11 23
+#define D12 19
+#define D13 18
+#define A0 38
+#define A1 37
+#define A2 35
+#define A3 34
+#define A4 36
+#define A5 39
+
+#define LED_BUILDIN 12
+
 #endif
