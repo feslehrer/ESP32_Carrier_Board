@@ -62,6 +62,7 @@ Beispiel:
   }
 
 # EEE895-CO2-Sensor für CO2-Sensor-Ampel-Shield
+![20230425_184724](https://user-images.githubusercontent.com/24614659/234347802-9cfc7fbd-2dfb-4f09-8f7a-93c3eb24550e.jpg)
 
 Mit dem EEE895 wird die CO2-Konzentration, die Temperatur und Druck
 gemessen.
