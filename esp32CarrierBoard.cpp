@@ -97,13 +97,11 @@ void eee895_read(uint8_t * i2cResponse)
   Wire.write(0);                          // Register 0: CO2 high byte
   Wire.endTransmission(true);             // Stop-Bedingung
 
-  Wire.requestFrom(0x5e,8);
+  Wire.requestFrom(0x5e,8,true);
   uint8_t i=0;
   
   while (Wire.available())
   {
     i2cResponse[i++] = Wire.read();
   }
-  Wire.endTransmission();
-
 }
