@@ -50,6 +50,7 @@ bool pinToggle(int pin, bool *toggleState);
 //lm75_read
 // Gibt den Temperaturwert 
 float lm75_read(uint8_t i2c_adresse) ;
+void  lm75_init(void);
 
 // Pindefinitionen
 #define D0 9
