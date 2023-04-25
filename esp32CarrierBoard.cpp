@@ -35,6 +35,11 @@ bool pinToggle(int pin, bool *toggleState)
   return pinState;
 }
 
+void lm75_init(void)
+{
+  Wire.begin();
+}
+
 // lm75_read:  Liest den Temperaturwert vom LM75 auf dem Carrier_Board
 //      Rückgabewert: Temperaturwert als float -55.0 ... +125.0 (°C)
 //      Die Auflösung beträgt 0,5°C
