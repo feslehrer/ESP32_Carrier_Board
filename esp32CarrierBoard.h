@@ -45,7 +45,9 @@
 //  }
 bool pinToggle(int pin, bool *toggleState); 
 
-
+//lm75_read
+// Gibt den Temperaturwert 
+float lm75_read(void) ;
 
 // Pindefinitionen
 #define D0 9
