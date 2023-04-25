@@ -5,95 +5,93 @@ https://www.ase-elektronik.de
 
 -------------------------------------------------------------------
 *** Taster-Auswertung mit Entprellung ***
+
 Prototypen:
-    bool pinToggle(int pin, bool *toggleState);
+<br>   bool pinToggle(int pin, bool *toggleState);
 
 Beschreibung:
-pinToggle wertet einen Tastendruck (polling) am pin aus und
+<br>pinToggle wertet einen Tastendruck (polling) am pin aus und
 liefert ein entprelltes Tastersignal zurück.
-Die Variable toggleState muss als Zeiger übergeben werden und
+<br>Die Variable toggleState muss als Zeiger übergeben werden und
 kann als Schaltsignal ausgewertet werden.
 
 Beispiel: 
-  #include <esp32CarrierBoard.h>
-  uint32_t toggleStateS3;
-  const int TasterS3 = 19;
+  <br>#include <esp32CarrierBoard.h>
+  <br>uint32_t toggleStateS3;
+  <br>const int TasterS3 = 19;
 
-  void setup()
-  { ...
-    pinMode(TasterS3,INPUT_PULLUP);
-    ...
-  }
+  <br>void setup()
+  <br>{ ...
+   <br> pinMode(TasterS3,INPUT_PULLUP);
+   <br> ...
+  <br>}
 
-  uint16_t count = 0;
+ <br> uint16_t count = 0;
 
-  void loop()
-  {
-    if(pinToggle(TasterS3, &toggleStateS3) == PRESS)
-      count++;
-    
-  }
+  <br>void loop()
+  <br>{
+    <br>if(pinToggle(TasterS3, &toggleStateS3) == PRESS)
+      <br>count++;  
+  <br>}
 
 *** LM75-Temperatursensor (I²C) ***
-Prototypen:
-    void  lm75_init(void);
-    float lm75_read(uint8_t i2c_adresse);
+<br>Prototypen:
+<br>    void  lm75_init(void);
+<br>    float lm75_read(uint8_t i2c_adresse);
  
 Beschreibung:
-lm75_read liefert den Temperaturwert des auf dem Carrier-Board
-verbauten LM75-Temperatursensors als float-Wert -55 ... 125°C zurück.
-Die i2c_adresse ist 0x48 und in der Konstanten SensorAdresse definiert.
-lm75_init muss 1 mal in der setup() aufgerufen werden.
+<br>lm75_read liefert den Temperaturwert des auf dem Carrier-Board
+<br>verbauten LM75-Temperatursensors als float-Wert -55 ... 125°C zurück.
+<br>Die i2c_adresse ist 0x48 und in der Konstanten SensorAdresse definiert.
+<br>lm75_init muss 1 mal in der setup() aufgerufen werden.
 
 Beispiel: 
-  #include <esp32CarrierBoard.h>
+<br>  #include <esp32CarrierBoard.h>
 
-  void setup()
-  { ...
-    lm75_init();
-    ...
-  }
+<br>  void setup()
+<br>    ...
+<br>    lm75_init();
+<br>    ...
+<br>  }
 
-  void loop()
-  {
-    ...
-    float cTemp = lm75_read(SensorAdresse);
-    ...
-  }
+<br>  void loop()
+<br>  {
+<br>    ...
+<br>    float cTemp = lm75_read(SensorAdresse);
+<br>    ...
+<br>  }
 
 # EEE895-CO2-Sensor für CO2-Sensor-Ampel-Shield
-![20230425_184724](https://user-images.githubusercontent.com/24614659/234347802-9cfc7fbd-2dfb-4f09-8f7a-93c3eb24550e.jpg)
+<br>![20230425_184724](https://user-images.githubusercontent.com/24614659/234347802-9cfc7fbd-2dfb-4f09-8f7a-93c3eb24550e.jpg)
 
-Mit dem EEE895 wird die CO2-Konzentration, die Temperatur und Druck
-gemessen.
-https://www.epluse.com/de/produkte/co2-messung/co2-module-und-fuehler/ee895/ 
+<br>Mit dem EEE895 wird die CO2-Konzentration, die Temperatur und Druck gemessen.
+<br>https://www.epluse.com/de/produkte/co2-messung/co2-module-und-fuehler/ee895/ 
 
 Prototypen:
-  void  eee895_init(void);
-  uint16_t eee895_readCO2(void);
-  uint16_t eee895_readPressure(void);
-  float eee895_readTemp(void); 
+<br>  void  eee895_init(void);
+<br>  uint16_t eee895_readCO2(void);
+<br>  uint16_t eee895_readPressure(void);
+<br>  float eee895_readTemp(void); 
 
 Beschreibung:
-  eee895_init muss 1 mal in der setup() aufgerufen werden.
-  CO2-Wert: 0 ... 5000 ppm (+-50ppm+-3%)
-  Pressure: 700 ... 1100 mbar (+-2mbar)
-  Temperatur:  -40°C ... 60°C (+-0,5K)
+<br>  eee895_init muss 1 mal in der setup() aufgerufen werden.
+<br>  CO2-Wert: 0 ... 5000 ppm (+-50ppm+-3%)
+<br>  Pressure: 700 ... 1100 mbar (+-2mbar)
+<br>  Temperatur:  -40°C ... 60°C (+-0,5K)
   
 Beispiel: 
-  #include <esp32CarrierBoard.h>
+<br>  #include <esp32CarrierBoard.h>
 
-  void setup()
-  { ...
-    ee895_init();
-    ...
-  }
+<br>  void setup()
+<br>  { ...
+<br>    ee895_init();
+<br>    ...
+<br>  }
 
-  void loop()
-  {
-    ...
-    uint16_t co2 = eee895_readCO2();
-    uint16_t pressure = eee895_readPressure();
-    float cTemp = eee895_readTemp();
-    ...
-  }
+<br> void loop()<br>
+<br>  { ...
+<br>    uint16_t co2 = eee895_readCO2();
+<br>    uint16_t pressure = eee895_readPressure();
+<br>    float cTemp = eee895_readTemp();
+<br>    ...
+<br>  }
