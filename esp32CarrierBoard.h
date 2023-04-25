@@ -58,8 +58,8 @@ void  lm75_init(void);
 
 void  eee895_init(void);
 void eee895_read(uint8_t * i2cResponse);
-float eee895_readCO2(void);
-float eee895_readPressure(void);
+uint16_t eee895_readCO2(void);
+uint16_t eee895_readPressure(void);
 float eee895_readTemp(void);
 
 // Pindefinitionen
