@@ -42,7 +42,7 @@ bool pinToggle(int pin, bool *toggleState)
 //      Die Auflösung beträgt 0,5°C
 float lm75_read(void) 
 {
-  byte msb, lsb, msb1;
+  byte msb=0, lsb=0, msb1=0;
   uint8_t adress = SensorAdresse;   // I2C-Adresse fuer LM75
   
   Wire.beginTransmission(adress);  
