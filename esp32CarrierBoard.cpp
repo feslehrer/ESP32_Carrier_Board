@@ -3,8 +3,6 @@
 #include "Arduino.h"
 #include <Wire.h>
 
-#define SensorAdresse 0x48  // I2C-Adresse fuer LM75
-
 int pins[] = TASTERPINS;            // ESP32-Carrier-Board Tasterpins
 uint64_t debounceTimer[PINANZAHL];  // PINANZAHL muss mit der Anzahl der Tasterpins
                                     // übereinstimmen.
@@ -40,11 +38,10 @@ bool pinToggle(int pin, bool *toggleState)
 // lm75_read:  Liest den Temperaturwert vom LM75 auf dem Carrier_Board
 //      Rückgabewert: Temperaturwert als float -55.0 ... +125.0 (°C)
 //      Die Auflösung beträgt 0,5°C
-float lm75_read(void) 
+float lm75_read(uint8_t adress) 
 {
   byte msb=0, lsb=0, msb1=0;
-  uint8_t adress = SensorAdresse;   // I2C-Adresse fuer LM75
-  
+    
   Wire.beginTransmission(adress);  
   Wire.write(0);       
   Wire.endTransmission();

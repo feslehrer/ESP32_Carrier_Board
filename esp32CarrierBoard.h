@@ -17,6 +17,8 @@
 #define TASTERPINS {5,23,19,18}     // Tasterpins am ESP32-Carrier-Board
 #define PINANZAHL   4               // muss mit der Anzahl der Tasterpins übereinstimmen.
 
+#define SensorAdresse 0x48      // I2C-Adresse fuer LM75 auf dem Carrier-Board
+
 // Funktionsprototypen
 //--------------------------------------------------------------------
 // pinToggle wertet einen Tastendruck (polling) am pin aus und
@@ -47,7 +49,7 @@ bool pinToggle(int pin, bool *toggleState);
 
 //lm75_read
 // Gibt den Temperaturwert 
-float lm75_read(void) ;
+float lm75_read(uint8_t i2c_adresse) ;
 
 // Pindefinitionen
 #define D0 9

@@ -6,8 +6,9 @@
 # Datatypes (KEYWORD1)
 ###########################################
 
-PRESS		KEYWORD1
+PRESS		    KEYWORD1
 DEBOUNCETIME 	KEYWORD1
+SensorAdresse   KEYWORD1
 
 ###########################################
 # Methods and Functions (KEYWORD2)
