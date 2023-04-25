@@ -64,3 +64,41 @@ float lm75_read(uint8_t adress)
   if (msb1 < 0x80)    return temp;
   else                return temp - 128;
 }
+
+void eee895_init(void)
+{
+  Wire.begin();
+}
+
+float eee895_readCO2()
+{
+  eee895_read();
+  return (float)(i2cResponse[0] * 256 + i2cResponse[1]);
+}
+
+float eee895_readPressure()
+{
+  eee895_read();
+  return (float)(i2cResponse[6] * 256 + i2cResponse[7])/ 10;
+}
+
+float eee895_readTemp()
+{
+  eee895_read();
+  return (float)(i2cResponse[2] * 256 + i2cResponse[3])/100;
+}
+
+void eee895_read(void)
+{
+  Wire.beginTransmission(eee895Adresse);
+  Wire.write(0);                          // Register 0: CO2 high byte
+  Wire.endTransmission(true);             // Stop-Bedingung
+
+  Wire.requestFrom(eee895Adresse,8,true);
+  uint8_t i=0;
+  
+  while (Wire.available())
+  {
+    i2cResponse[i++] = Wire.read();
+  }
+}

@@ -18,6 +18,7 @@
 #define PINANZAHL   4               // muss mit der Anzahl der Tasterpins übereinstimmen.
 
 #define SensorAdresse 0x48      // I2C-Adresse fuer LM75 auf dem Carrier-Board
+#define eee895Adresse 0x5E      // I2C-Adresse EE895 (simplified protocol)
 
 // Funktionsprototypen
 //--------------------------------------------------------------------
@@ -51,6 +52,17 @@ bool pinToggle(int pin, bool *toggleState);
 // Gibt den Temperaturwert vom LM75 auf dem Carrier-Board zurück
 float lm75_read(uint8_t i2c_adresse) ;
 void  lm75_init(void);
+
+// CO2-Sensor EEE895
+uint8_t i2cResponse[8];
+float co2;
+float cTemp;
+float druck;
+
+void  eee895_init(void);
+float eee895_readCO2(void);
+float eee895_readPressure(void);
+float eee895_readTemp(void);
 
 // Pindefinitionen
 #define D0 9
