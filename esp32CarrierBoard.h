@@ -54,10 +54,7 @@ float lm75_read(uint8_t i2c_adresse) ;
 void  lm75_init(void);
 
 // CO2-Sensor EEE895
-uint8_t i2cResponse[8];
-float co2;
-float cTemp;
-float druck;
+//uint8_t i2cResponse[8];
 
 void  eee895_init(void);
 float eee895_readCO2(void);

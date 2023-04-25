@@ -72,23 +72,26 @@ void eee895_init(void)
 
 float eee895_readCO2()
 {
-  eee895_read();
+  uint8_t i2cResponse[8];
+  eee895_read(i2cResponse);
   return (float)(i2cResponse[0] * 256 + i2cResponse[1]);
 }
 
 float eee895_readPressure()
 {
-  eee895_read();
+  uint8_t i2cResponse[8];
+  eee895_read(i2cResponse);
   return (float)(i2cResponse[6] * 256 + i2cResponse[7])/ 10;
 }
 
 float eee895_readTemp()
 {
-  eee895_read();
+  uint8_t i2cResponse[8];
+  eee895_read(i2cResponse);
   return (float)(i2cResponse[2] * 256 + i2cResponse[3])/100;
 }
 
-void eee895_read(void)
+void eee895_read(uint8_t * i2cResponse)
 {
   Wire.beginTransmission(eee895Adresse);
   Wire.write(0);                          // Register 0: CO2 high byte
