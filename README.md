@@ -12,3 +12,8 @@ kann als Schaltsignal ausgewertet werden.
 
 bool pinToggle(int pin, bool *toggleState);
 
+
+lm75_read liefert den Temperaturwert des auf dem Carrier-Board
+verbauten LM75-Temperatursensors als float-Wert -55 ... 125°C zurück.
+
+float lm75_read(void);
