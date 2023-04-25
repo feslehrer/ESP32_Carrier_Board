@@ -18,6 +18,11 @@ pinToggle	KEYWORD2
 lm75_read   KEYWORD2
 lm75_init   KEYWORD2
 
+eee895_init           KEYWORD2
+eee895_readCO2        KEYWORD2
+eee895_readPressure   KEYWORD2
+eee895_readTemp       KEYWORD2
+
 ######################################
 # Constants (LITERAL1)
 #######################################	
