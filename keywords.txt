@@ -16,6 +16,7 @@ SensorAdresse   KEYWORD1
 
 pinToggle	KEYWORD2
 lm75_read   KEYWORD2
+lm75_init   KEYWORD2
 
 ######################################
 # Constants (LITERAL1)

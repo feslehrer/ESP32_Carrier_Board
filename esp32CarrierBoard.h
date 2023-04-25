@@ -48,7 +48,7 @@
 bool pinToggle(int pin, bool *toggleState); 
 
 //lm75_read
-// Gibt den Temperaturwert 
+// Gibt den Temperaturwert vom LM75 auf dem Carrier-Board zurück
 float lm75_read(uint8_t i2c_adresse) ;
 void  lm75_init(void);
 
