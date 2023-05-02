@@ -4,18 +4,18 @@
 https://www.ase-schlierbach.de
 
 -------------------------------------------------------------------
-*** Taster-Auswertung mit Entprellung ***
+## Taster-Auswertung mit Entprellung
 
-Prototypen:
+###Prototypen:
 <br>   bool pinToggle(int pin, bool *toggleState);
 
-Beschreibung:
+###Beschreibung:
 <br>pinToggle wertet einen Tastendruck (polling) am pin aus und
 liefert ein entprelltes Tastersignal zurück.
 <br>Die Variable toggleState muss als Zeiger übergeben werden und
 kann als Schaltsignal ausgewertet werden.
 
-Beispiel: 
+###Beispiel: 
   <br>#include <esp32CarrierBoard.h>
   <br>uint32_t toggleStateS3;
   <br>const int TasterS3 = 19;
@@ -34,18 +34,18 @@ Beispiel:
       <br>count++;  
   <br>}
 
-*** LM75-Temperatursensor (I²C) ***
-<br>Prototypen:
+## LM75-Temperatursensor (I²C)
+###Prototypen:
 <br>    void  lm75_init(void);
 <br>    float lm75_read(uint8_t i2c_adresse);
  
-Beschreibung:
+###Beschreibung:
 <br>lm75_read liefert den Temperaturwert des auf dem Carrier-Board
 <br>verbauten LM75-Temperatursensors als float-Wert -55 ... 125°C zurück.
 <br>Die i2c_adresse ist 0x48 und in der Konstanten SensorAdresse definiert.
 <br>lm75_init muss 1 mal in der setup() aufgerufen werden.
 
-Beispiel: 
+###Beispiel: 
 <br>  #include <esp32CarrierBoard.h>
 
 <br>  void setup()
@@ -61,25 +61,25 @@ Beispiel:
 <br>    ...
 <br>  }
 
-# EEE895-CO2-Sensor für CO2-Sensor-Ampel-Shield
+## EEE895-CO2-Sensor für CO2-Sensor-Ampel-Shield
 <br>![20230425_184724](https://user-images.githubusercontent.com/24614659/234347802-9cfc7fbd-2dfb-4f09-8f7a-93c3eb24550e.jpg)
 
 <br>Mit dem EEE895 wird die CO2-Konzentration, die Temperatur und Druck gemessen.
 <br>https://www.epluse.com/de/produkte/co2-messung/co2-module-und-fuehler/ee895/ 
 
-Prototypen:
+###Prototypen:
 <br>  void  eee895_init(void);
 <br>  uint16_t eee895_readCO2(void);
 <br>  uint16_t eee895_readPressure(void);
 <br>  float eee895_readTemp(void); 
 
-Beschreibung:
+###Beschreibung:
 <br>  eee895_init muss 1 mal in der setup() aufgerufen werden.
 <br>  CO2-Wert: 0 ... 5000 ppm (+-50ppm+-3%)
 <br>  Pressure: 700 ... 1100 mbar (+-2mbar)
 <br>  Temperatur:  -40°C ... 60°C (+-0,5K)
   
-Beispiel: 
+###Beispiel: 
 <br>  #include <esp32CarrierBoard.h>
 
 <br>  void setup()
