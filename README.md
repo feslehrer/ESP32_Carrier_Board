@@ -91,7 +91,7 @@ Die WS2812 (Neopixel) liegen an GPIO 13 und können mit der **Adafruit_Neopixel*
 ```c
 #include <esp32CarrierBoard.h>
 
-oid setup()
+void setup()
 {
   ee895_init();
 }
