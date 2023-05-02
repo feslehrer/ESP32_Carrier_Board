@@ -13,9 +13,9 @@ bool pinToggle(int pin, bool *toggleState);
 ```
 
 ### Beschreibung:
-pinToggle wertet einen Tastendruck (polling) am pin aus und
+**pinToggle()** wertet einen Tastendruck (polling) am pin aus und
 liefert ein entprelltes Tastersignal zurück.
-Die Variable toggleState muss als Zeiger übergeben werden und
+Die Variable **toggleState** muss als Zeiger übergeben werden und
 kann als Schaltsignal ausgewertet werden.
 
 ### Beispiel: 
@@ -46,9 +46,9 @@ float lm75_read(uint8_t i2c_adresse);
 ```
 
 ### Beschreibung:
-lm75_read liefert den Temperaturwert des auf dem Carrier-Board verbauten LM75-Temperatursensors als float-Wert -55 ... 125°C zurück.
-Die i2c_adresse ist 0x48 und in der Konstanten SensorAdresse definiert. 
-lm75_init muss 1 mal in der setup() aufgerufen werden.
+**lm75_read()** liefert den Temperaturwert des auf dem Carrier-Board verbauten LM75-Temperatursensors als float-Wert -55 ... 125°C zurück.
+Die i2c_adresse ist 0x48 und in der Konstanten **SensorAdresse** definiert. 
+**lm75_init()** muss 1 mal in der **setup()** aufgerufen werden.
 
 ### Beispiel:
 ```c
@@ -68,7 +68,7 @@ void loop()
 ## EEE895-CO2-Sensor für CO2-Sensor-Ampel-Shield
 <br>![20230425_184724](https://user-images.githubusercontent.com/24614659/234347802-9cfc7fbd-2dfb-4f09-8f7a-93c3eb24550e.jpg)
 
-<br>Mit dem EEE895 wird die CO2-Konzentration, die Temperatur und Druck gemessen.
+Mit dem EEE895 wird die CO2-Konzentration, die Temperatur und Druck gemessen.
 <br>https://www.epluse.com/de/produkte/co2-messung/co2-module-und-fuehler/ee895/ 
 
 ### Prototypen:
