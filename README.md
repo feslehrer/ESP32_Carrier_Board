@@ -1,5 +1,5 @@
 # ESP32_Carrier_Board
-Funktionssammlung für ESP32-Carrier-Board
+## Funktionssammlung für ESP32-Carrier-Board
 
 ![grafik](https://user-images.githubusercontent.com/24614659/197691402-ae8d4d87-3673-4bed-a442-19f261159832.png)
 https://www.ase-schlierbach.de
@@ -81,7 +81,7 @@ float eee895_readTemp(void);
 
 ### Beschreibung:
 
-eee895_init() muss 1 mal in der setup() aufgerufen werden.
+**eee895_init()** muss 1 mal in der **setup()** aufgerufen werden.
 <br>  CO2-Wert: 0 ... 5000 ppm (+-50ppm+-3%)
 <br>  Pressure: 700 ... 1100 mbar (+-2mbar)
 <br>  Temperatur:  -40°C ... 60°C (+-0,5K)
