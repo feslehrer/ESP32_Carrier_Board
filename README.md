@@ -7,7 +7,7 @@ https://www.ase-schlierbach.de
 ## Taster-Auswertung mit Entprellung
 
 ### Prototypen:
-<br>   bool pinToggle(int pin, bool *toggleState);
+<br>   `bool pinToggle(int pin, bool *toggleState);`
 
 ### Beschreibung:
 <br>pinToggle wertet einen Tastendruck (polling) am pin aus und
