@@ -46,10 +46,11 @@ float lm75_read(uint8_t i2c_adresse);
 ```
 
 ### Beschreibung:
-<br>lm75_read liefert den Temperaturwert des auf dem Carrier-Board
-<br>verbauten LM75-Temperatursensors als float-Wert -55 ... 125°C zurück.
-<br>Die i2c_adresse ist 0x48 und in der Konstanten SensorAdresse definiert.
-<br>lm75_init muss 1 mal in der setup() aufgerufen werden.
+lm75_read liefert den Temperaturwert des auf dem Carrier-Board verbauten LM75-Temperatursensors als float-Wert -55 ... 125°C zurück.
+
+Die i2c_adresse ist 0x48 und in der Konstanten SensorAdresse definiert. 
+
+lm75_init muss 1 mal in der setup() aufgerufen werden.
 
 ### Beispiel:
 ```c
