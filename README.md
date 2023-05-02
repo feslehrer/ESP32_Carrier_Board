@@ -54,7 +54,6 @@ Die i2c_adresse ist 0x48 und in der Konstanten **SensorAdresse** definiert.
 #include <esp32CarrierBoard.h>
 void setup()
 {
-  void setup()
   lm75_init();
 }
 
