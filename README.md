@@ -12,7 +12,6 @@ https://www.ase-schlierbach.de
 ### Beschreibung:
 pinToggle wertet einen Tastendruck (polling) am pin aus und
 liefert ein entprelltes Tastersignal zurück.
-
 Die Variable toggleState muss als Zeiger übergeben werden und
 kann als Schaltsignal ausgewertet werden.
 
