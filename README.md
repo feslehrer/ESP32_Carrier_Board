@@ -7,16 +7,18 @@ https://www.ase-schlierbach.de
 ## Taster-Auswertung mit Entprellung
 
 ### Prototypen:
-<tab>  `bool pinToggle(int pin, bool *toggleState);`
+  `bool pinToggle(int pin, bool *toggleState);`
 
 ### Beschreibung:
-<br>pinToggle wertet einen Tastendruck (polling) am pin aus und
+pinToggle wertet einen Tastendruck (polling) am pin aus und
 liefert ein entprelltes Tastersignal zurück.
-<br>Die Variable toggleState muss als Zeiger übergeben werden und
+
+Die Variable toggleState muss als Zeiger übergeben werden und
 kann als Schaltsignal ausgewertet werden.
 
 ### Beispiel: 
-  <br>#include <esp32CarrierBoard.h>
+...
+  #include <esp32CarrierBoard.h>
   <br>uint32_t toggleStateS3;
   <br>const int TasterS3 = 19;
 
@@ -33,6 +35,7 @@ kann als Schaltsignal ausgewertet werden.
     <br>if(pinToggle(TasterS3, &toggleStateS3) == PRESS)
       <br>count++;  
   <br>}
+ ...
 
 ## LM75-Temperatursensor (I²C)
 ### Prototypen:
