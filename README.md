@@ -82,9 +82,9 @@ float eee895_readTemp(void);
 ### Beschreibung:
 
 **eee895_init()** muss 1 mal in der **setup()** aufgerufen werden.
-<br>  CO2-Wert: 0 ... 5000 ppm (+-50ppm+-3%)
-<br>  Pressure: 700 ... 1100 mbar (+-2mbar)
-<br>  Temperatur:  -40°C ... 60°C (+-0,5K)
++CO2-Wert: 0 ... 5000 ppm (+-50ppm+-3%)
++Pressure: 700 ... 1100 mbar (+-2mbar)
++Temperatur:  -40°C ... 60°C (+-0,5K)
   
 ### Beispiel:
 ```c
