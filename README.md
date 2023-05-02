@@ -84,6 +84,8 @@ float eee895_readTemp(void);
 + CO2-Wert: 0 ... 5000 ppm (+-50ppm+-3%)
 + Pressure: 700 ... 1100 mbar (+-2mbar)
 + Temperatur:  -40°C ... 60°C (+-0,5K)
+
+Die WS1238 (Neopixel) liegen an GPIO 13 und können mit der **Adafruit_Neopixel**-Bibliothek programmiert werden.
   
 ### Beispiel:
 ```c
