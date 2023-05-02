@@ -17,23 +17,24 @@ kann als Schaltsignal ausgewertet werden.
 
 ### Beispiel: 
 ...
+```c
   #include <esp32CarrierBoard.h>
-  <br>uint32_t toggleStateS3;
-  <br>const int TasterS3 = 19;
+  uint32_t toggleStateS3;
+  const int TasterS3 = 19;
 
-  <br>void setup()
-  <br>{ ...
-   <br> pinMode(TasterS3,INPUT_PULLUP);
-   <br> ...
-  <br>}
+  void setup()
+  { 
+    pinMode(TasterS3,INPUT_PULLUP);
+  }
 
- <br> uint16_t count = 0;
+  uint16_t count = 0;
 
-  <br>void loop()
-  <br>{
-    <br>if(pinToggle(TasterS3, &toggleStateS3) == PRESS)
-      <br>count++;  
-  <br>}
+  void loop()
+  {
+    if(pinToggle(TasterS3, &toggleStateS3) == PRESS)
+      count++;  
+  }
+ ```
  ...
 
 ## LM75-Temperatursensor (I²C)
