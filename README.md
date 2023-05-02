@@ -1,7 +1,6 @@
 # ESP32_Carrier_Board
 ## Funktionssammlung für ESP32-Carrier-Board
-<img src="https://user-images.githubusercontent.com/24614659/197691402-ae8d4d87-3673-4bed-a442-19f261159832.png" alt="ESP32-Carrier-Board" width="600"> 
-![grafik](https://user-images.githubusercontent.com/24614659/197691402-ae8d4d87-3673-4bed-a442-19f261159832.png)
+<img src="https://user-images.githubusercontent.com/24614659/197691402-ae8d4d87-3673-4bed-a442-19f261159832.png" alt="ESP32-Carrier-Board" width="600">
 https://www.ase-schlierbach.de
 
 -------------------------------------------------------------------
@@ -66,7 +65,7 @@ void loop()
 ```
 
 ## EEE895-CO2-Sensor für CO2-Sensor-Ampel-Shield
-<br>![20230425_184724](https://user-images.githubusercontent.com/24614659/234347802-9cfc7fbd-2dfb-4f09-8f7a-93c3eb24550e.jpg)
+<img src="https://user-images.githubusercontent.com/24614659/234347802-9cfc7fbd-2dfb-4f09-8f7a-93c3eb24550e.jpg" alt="CO2-Sensor-Ampel" width="600">
 
 Mit dem EEE895 wird die CO2-Konzentration, die Temperatur und Druck gemessen.
 <br>https://www.epluse.com/de/produkte/co2-messung/co2-module-und-fuehler/ee895/ 
