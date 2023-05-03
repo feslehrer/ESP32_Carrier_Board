@@ -6,7 +6,7 @@
 # Datatypes (KEYWORD1)
 ###########################################
 
-esp32CarrierBoard	LITERAL1	esp32CarrierBoard
+esp32CarrierBoard	KEYWORD1	esp32CarrierBoard
 
 ###########################################
 # Methods and Functions (KEYWORD2)
@@ -25,6 +25,6 @@ eee895_readTemp	KEYWORD2
 # Constants (LITERAL1)
 #######################################	
 
-PRESS	KEYWORD1
-DEBOUNCETIME	KEYWORD1
-SensorAdresse	KEYWORD1
+PRESS	LITERAL1
+DEBOUNCETIME	LITERAL1
+SensorAdresse	LITERAL1
