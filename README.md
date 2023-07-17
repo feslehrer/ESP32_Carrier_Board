@@ -19,7 +19,7 @@ kann als Schaltsignal ausgewertet werden.
 ### Beispiel: 
 ```c
   #include <esp32CarrierBoard.h>
-  uint32_t toggleStateS3;
+  bool toggleStateS3;
   const int TasterS3 = 19;
 
   void setup()
