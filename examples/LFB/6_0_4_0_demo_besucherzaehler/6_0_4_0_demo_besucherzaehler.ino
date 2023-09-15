@@ -24,7 +24,7 @@ uint16_t count = 0;
 void loop() 
 {
   char buf[6];
-  sprintf(buf, "%5u", count);                                         // Für Rechtsbündige Darstellung im Display
+  sprintf(buf, "%5u", count);           // Für Rechtsbündige Darstellung im Display
   lcd.setCursor(8,1);
   lcd.print(buf);
 
