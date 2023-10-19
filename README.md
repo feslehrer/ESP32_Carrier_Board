@@ -40,7 +40,7 @@ kann als Schaltsignal ausgewertet werden.
 ### Prototypen:
 ```c
 void  lm75_init(void);
-float lm75_read(uint8_t i2c_adresse);
+float lm75_read(void);
 ```
 
 ### Beschreibung:
@@ -58,7 +58,7 @@ void setup()
 
 void loop()
 {
-  float cTemp = lm75_read(SensorAdresse);
+  float cTemp = lm75_read();
 }
 ```
 
