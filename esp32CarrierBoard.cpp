@@ -25,7 +25,7 @@ bool pinToggle(int pin, bool *toggleState)
   
   if (digitalRead(pin) == PRESS)
   {
-    if(newTime - debounceTimer[i] > 50)
+    if(newTime - debounceTimer[i] > DEBOUNCETIME)
     {
       *toggleState = !*toggleState;
       pinState = PRESS;
