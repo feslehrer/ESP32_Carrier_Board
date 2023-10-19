@@ -4,12 +4,12 @@
 #include <Wire.h>
 
 int pins[] = TASTERPINS;            // ESP32-Carrier-Board Tasterpins
-uint64_t debounceTimer[PINANZAHL];  // PINANZAHL muss mit der Anzahl der Tasterpins
-                                    // übereinstimmen.
+uint64_t oldTime[PINANZAHL];        // PINANZAHL muss mit der Anzahl der Tasterpins
+                                    // übereinstimmen (in esp32CarrierBoard.h).
 
 // pinToggle:  Schalten und Entprellen von Tastern
-//         pin: Pinnummer des zu Input-Pins
-//         toggleState: Schaltzustand des Toggle-Glieds (entprellt)
+//         pin: Pinnummer des Input-Pins
+//         toggleState:   Schaltzustand des Toggle-Glieds (entprellt)
 //         debounceTimer: Zeit der letzten Flankenerkennung
 //      Rückgabewert: Tastersignal entprellt
 bool pinToggle(int pin, bool *toggleState) 
@@ -25,12 +25,12 @@ bool pinToggle(int pin, bool *toggleState)
   
   if (digitalRead(pin) == PRESS)
   {
-    if(newTime - debounceTimer[i] > DEBOUNCETIME)
+    if(newTime - oldTime[i] > DEBOUNCETIME)
     {
       *toggleState = !*toggleState;
       pinState = PRESS;
     }
-    debounceTimer[i] = newTime;
+    oldTime[i] = newTime;
   }
   return pinState;
 }
