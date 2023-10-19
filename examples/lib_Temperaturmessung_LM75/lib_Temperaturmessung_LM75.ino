@@ -5,7 +5,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup()
 {
-  lm75_init(SensorAdresse);
+  lm75_init();
   Wire.begin();
   Serial.begin(9600);
   Serial.println("Temperatur");
@@ -16,7 +16,7 @@ void setup()
 
 void loop()
 {
-  float temp = lm75_read(SensorAdresse);
+  float temp = lm75_read();
   Serial.println(temp);
   lcd.setCursor(0,1);
   lcd.print(temp);lcd.print("\337C"); 
