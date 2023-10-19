@@ -15,9 +15,8 @@ uint64_t oldTime[PINANZAHL];        // PINANZAHL muss mit der Anzahl der Tasterp
 bool pinToggle(int pin, bool *toggleState) 
 {
   int i;
-  int z = PINANZAHL;
-
-  for (i=0; i<z; i++)
+  
+  for (i=0; i<PINANZAHL; i++)
     if(pins[i]== pin) break;
     
   bool pinState = !PRESS;
