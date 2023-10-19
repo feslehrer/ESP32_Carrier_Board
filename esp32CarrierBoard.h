@@ -50,8 +50,8 @@ bool pinToggle(int pin, bool *toggleState);
 
 //lm75_read
 // Gibt den Temperaturwert vom LM75 auf dem Carrier-Board zurück
-float lm75_read(uint8_t i2c_adresse) ;
-void  lm75_init(void);
+void  lm75_init(int i2c_adresse);
+float lm75_read(int i2c_adresse) ;
 
 // CO2-Sensor EEE895
 //uint8_t i2cResponse[8];
