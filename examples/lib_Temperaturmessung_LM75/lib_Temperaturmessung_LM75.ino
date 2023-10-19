@@ -5,7 +5,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup()
 {
-  lm75_init();
+  lm75_init(SensorAdresse);
   Wire.begin();
   Serial.begin(9600);
   Serial.println("Temperatur");
