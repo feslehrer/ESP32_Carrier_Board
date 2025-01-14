@@ -86,4 +86,11 @@ float eee895_readTemp(void);
 
 #define LED_BUILDIN 12
 
+#define S1  5
+#define S2  23
+#define S3  19
+#define S4  18
+#define SPEAKER 27
+#define BACKLIGHT 2
+
 #endif
