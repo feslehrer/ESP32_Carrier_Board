@@ -9,6 +9,9 @@
 #ifndef _ESP32CARRIERBOARD_H_
 #define _ESP32CARRIERBOARD_H_
 #include "Arduino.h"
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27,16,2);
 
 #define PRESS   LOW            // Symbol für gedrückten Taster
                                // LOW = Nullaktiv, HIGH = Einsaktiv                   
