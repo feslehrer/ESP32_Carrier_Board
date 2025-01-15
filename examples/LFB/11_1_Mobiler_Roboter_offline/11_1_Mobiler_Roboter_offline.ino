@@ -88,7 +88,7 @@ void loop()
 
     lcd.setCursor(0,1);
 
-    if (!digitalRead(EndL)||!digitalRead(EndL))
+    if (!digitalRead(EndL)||!digitalRead(EndR))
     {
       robby_richtung(STOPP, 0, fade);
       lcd.print("NOTHALT     ");      
