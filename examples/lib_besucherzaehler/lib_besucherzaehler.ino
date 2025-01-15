@@ -45,4 +45,5 @@ void loop()
     
   if(digitalRead(S4_CLEAR) == PRESS)
     count=0;
+
 }

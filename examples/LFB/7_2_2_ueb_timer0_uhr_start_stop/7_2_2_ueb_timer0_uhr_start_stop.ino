@@ -1,16 +1,16 @@
 #include <esp32CarrierBoard.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
-const int timerNr = 0;
-const int Divider = 80;
-const unsigned long Alarm = 1000000;
+
+const unsigned long Alarm = 1'000'000;
+const unsigned long frequency = 1'000'000;
 volatile unsigned int sekunden = 0;
 volatile unsigned int minuten = 0;
 
 LiquidCrystal_I2C lcd(0x27,16,2);
-hw_timer_t *timer = NULL;
+hw_timer_t *timer1 = NULL;
 
-const int StartButton = 19;  //S3
+const int StartButton = S3;  //Pin 19
 
 void IRAM_ATTR timer_isr(void)
 {
@@ -32,9 +32,9 @@ void setup()
 
   pinMode(StartButton, INPUT_PULLUP);
   
-  timer = timerBegin(timerNr,Divider,true);
-  timerAttachInterrupt(timer,&timer_isr,true);
-  timerAlarmWrite(timer,Alarm,true);
+  timer1 = timerBegin(frequency);
+  timerAttachInterrupt(timer1,&timer_isr);
+  timerAlarm(timer1,Alarm,true,0);
 }
 
 bool startStopStatus;
@@ -45,9 +45,9 @@ void loop()
 
   pinToggle(StartButton, &startStopStatus);
   if(startStopStatus == true)
-    timerAlarmEnable(timer);
+    timerStart(timer1);
   else
-    timerAlarmDisable(timer);
+    timerStop(timer1);
     
   sprintf(buffer,"%02u:%02u",minuten,sekunden);
   lcd.setCursor(0,0);

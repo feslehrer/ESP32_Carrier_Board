@@ -7,7 +7,6 @@ volatile bool ledStatus;
 void IRAM_ATTR toggleLED(void)
 {
   uint32_t newTime = millis();
-  Serial.println(oldTime);
   if(newTime - oldTime > 250)
   {
     ledStatus = !ledStatus;
@@ -18,7 +17,6 @@ void IRAM_ATTR toggleLED(void)
 
 void setup()
 {
-  Serial.begin(9600);
   pinMode(LED,OUTPUT);
   digitalWrite(LED,HIGH);
   ledStatus = true;

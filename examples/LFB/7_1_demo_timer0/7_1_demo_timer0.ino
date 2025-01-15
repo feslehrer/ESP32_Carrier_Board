@@ -1,9 +1,8 @@
 const int LEDpin = 32;
-const int timerNr = 0;
-const int Divider = 80;
-const unsigned long Alarm = 1000000;
+const unsigned long Alarm = 1'000'000;
+const unsigned long frequency = 1'000'000;
 
-hw_timer_t *timer = NULL;
+hw_timer_t *timer1 = NULL;
 volatile byte led = LOW;
 
 void IRAM_ATTR timer_isr(void)
@@ -15,10 +14,15 @@ void IRAM_ATTR timer_isr(void)
 void setup()
 {
   pinMode(LEDpin,OUTPUT);
-  timer = timerBegin(timerNr,Divider,true);
-  timerAttachInterrupt(timer,&timer_isr,true);
-  timerAlarmWrite(timer,Alarm,true);
-  timerAlarmEnable(timer);
+
+  timer1 = timerBegin(frequency);
+  timerAttachInterrupt(timer1,&timer_isr);
+  timerAlarm(timer1,Alarm,true,0);
 }
 
 void loop() {}
+
+
+
+
+

@@ -14,7 +14,7 @@ void setup()
   pinMode(tasterS3,INPUT_PULLUP);
 }
 
-void loop() 
+void loop()
  {
   bool newStatus = digitalRead(tasterS3);   //neuer Tasterstatus
  

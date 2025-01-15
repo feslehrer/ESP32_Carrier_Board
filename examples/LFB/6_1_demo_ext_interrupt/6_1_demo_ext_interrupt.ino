@@ -1,8 +1,7 @@
-
 const int LED = 32;
 const int S3  = 19;
 
-volatile bool LedStatus = false;
+bool LedStatus = false;
 
 void IRAM_ATTR toggle_isr(void)
 {
