@@ -12,14 +12,14 @@ int play = false;
 
 void loop()
 { // ADC hat 12-Bit Auflösung
-  int hell = analogRead(A3);   // GPIO 34
-  ledcWrite(LED_BUILDIN, hell);
-  //(GPIO, duty_cycle)
-  ledcFade(BACKLIGHT,0,4096,1000); // GPIO, start_dc, end_dc, time
+  int hell = analogRead(A3);          // GPIO 34
+  ledcWrite(LED_BUILDIN, hell);       // (GPIO, duty_cycle)
+  ledcFade(BACKLIGHT,0,4096,1000);    // (GPIO, start_cycle, end_cycle, cycle_time)
+
   if (!play)
-  { ledcWriteNote(SPEAKER,NOTE_A,4); // GPIO,Note,Oktave
-    delay(3000);
-    ledcWriteTone(SPEAKER,0);        // GPIO, Frequenz
+  { ledcWriteNote(SPEAKER,NOTE_A,4);  // (GPIO, Note, Oktave)
+    delay(3000);                      // Kammerton A' = 440 Hz für 3s
+    ledcWriteTone(SPEAKER,0);         // (GPIO, Frequenz) Ton ausschalten
     play = true;   
   }
   delay(50);
