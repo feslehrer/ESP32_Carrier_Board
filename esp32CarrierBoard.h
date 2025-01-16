@@ -4,14 +4,11 @@
 
     Autor: Rahm, R.
     Datum:           20.10.2022
-    letzte Änderung: 20.10.2022
+    letzte Änderung: 16.01.2025
 */
 #ifndef _ESP32CARRIERBOARD_H_
 #define _ESP32CARRIERBOARD_H_
 #include "Arduino.h"
-#include <LiquidCrystal_I2C.h>
-
-LiquidCrystal_I2C lcd(0x27,16,2);
 
 #define PRESS   LOW            // Symbol für gedrückten Taster
                                // LOW = Nullaktiv, HIGH = Einsaktiv                   
