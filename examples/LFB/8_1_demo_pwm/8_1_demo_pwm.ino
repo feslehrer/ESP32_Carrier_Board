@@ -15,7 +15,7 @@ void loop()
   int hell = analogRead(A3);   // GPIO 34
   ledcWrite(LED_BUILDIN, hell);
   //(GPIO, duty_cycle)
-  ledcWrite(BACKLIGHT,4096-hell);
+  ledcFade(BACKLIGHT,0,4096,1000); // GPIO, start_dc, end_dc, time
   if (!play)
   { ledcWriteNote(SPEAKER,NOTE_A,4); // GPIO,Note,Oktave
     delay(3000);
