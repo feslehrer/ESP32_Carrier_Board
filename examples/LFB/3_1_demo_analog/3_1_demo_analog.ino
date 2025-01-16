@@ -1,3 +1,5 @@
+#include <esp32CarrierBoard.h>
+
 void setup() 
 {
   Serial.begin(9600);
@@ -5,7 +7,7 @@ void setup()
 
 void loop() 
 {
-  uint16_t wert = analogRead(34);
+  uint16_t wert = analogRead(A3);  // A3 = GPIO 34
   Serial.print(wert);
   Serial.print(" -> ");
 

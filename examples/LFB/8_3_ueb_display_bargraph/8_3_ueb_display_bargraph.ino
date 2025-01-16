@@ -4,7 +4,7 @@
 LiquidCrystal_I2C lcd(0x27, 16, 2);    // I2C-Display: adresse 0x27, 2 Zeilen á 16 Zeichen
 
 const int pwm1Pin = 2;
-const int ch1 = 1;
+
 void setup()
 {
   Serial.begin(9600);
@@ -15,8 +15,7 @@ void setup()
   lcd.setCursor(0,0);
   lcd.print("LCD dimmen...");
   
-  ledcSetup(ch1, 1000, 12);            // (Kanal, Frequenz, Auflösung)
-  ledcAttachPin(pwm1Pin, ch1);         // Pin mit Kanal verbinden  
+  ledcAttach(pwm1Pin, 1000, 12);    // GPIO, Frequenz, Auflösung  
 }
 
 uint16_t count = 0;
@@ -24,7 +23,7 @@ uint16_t count = 0;
 void loop() 
 {
   uint16_t hell = analogRead(34)& 0x0ff8;    // Poti einlesen 12 Bit (letzte 3 Bit = 0)
-  ledcWrite(ch1, hell);
+  ledcWrite(pwm1Pin, hell);
 
   hell = map(hell,0,4095,0,16);
   
