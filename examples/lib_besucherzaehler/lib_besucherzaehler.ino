@@ -4,11 +4,11 @@
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);    // I2C-Display: adresse 0x27, 2 Zeilen á 16 Zeichen
                         
-const int S4_CLEAR = 18;
-const int S3_COUNT = 19;
-const int S2_COUNT = 23;
-bool      toggleStateS3;
-bool      toggleStateS2;
+const int CLEAR = S4;     // GPIO 18
+const int COUNTUP = S3;   // GPIO 19
+const int COUNTDOWN = S2; // GPIO 23
+bool      toggleStateUP;
+bool      toggleStateDOWN;
 
 void setup()
 {
@@ -21,9 +21,9 @@ void setup()
   lcd.setCursor(0,1);
   lcd.print("Anzahl:");
   
-  pinMode(S2_COUNT,INPUT_PULLUP);
-  pinMode(S3_COUNT,INPUT_PULLUP);
-  pinMode(S4_CLEAR,INPUT_PULLUP);
+  pinMode(COUNTUP,INPUT_PULLUP);
+  pinMode(COUNTDOWN,INPUT_PULLUP);
+  pinMode(CLEAR,INPUT_PULLUP);
 }
 
 uint16_t count = 0;
@@ -35,15 +35,15 @@ void loop()
   lcd.setCursor(8,1);
   lcd.print(buf);
 
-  if(pinToggle(S3_COUNT, &toggleStateS3) == PRESS)
+  if(pinToggle(COUNTUP, &toggleStateUP) == PRESS)
     count++;
-    
-  if(pinToggle(S2_COUNT, &toggleStateS2) == PRESS)
-  { 
+
+  if(pinToggle(COUNTDOWN, &toggleStateDOWN) == PRESS)
+  {
     if(count!=0) count--;
   }
-    
-  if(digitalRead(S4_CLEAR) == PRESS)
+
+  if(digitalRead(CLEAR) == PRESS)
     count=0;
 
 }
