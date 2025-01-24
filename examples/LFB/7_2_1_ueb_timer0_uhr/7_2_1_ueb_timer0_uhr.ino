@@ -1,6 +1,6 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
-
+// tint = Alarm / frequency
 const unsigned long Alarm = 1'000'000;
 const unsigned long frequency = 1'000'000;
 volatile unsigned int sekunden = 0;
@@ -23,7 +23,7 @@ IRAM_ATTR void timer_isr(void)
 
 void setup()
 {
-  Wire.begin(21,22,100000);
+  Wire.begin(21,22);
   lcd.init();
   lcd.clear();
   
@@ -40,3 +40,4 @@ void loop()
   lcd.setCursor(0,0);
   lcd.print(buffer);
 }
+
