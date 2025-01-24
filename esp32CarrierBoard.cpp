@@ -63,6 +63,21 @@ float lm75_read(void)
   else                return temp - 128;
 }
 
+// fMap: Zur Bereichsanpassung von float-Werten.
+// Bsp.: Mappen der Analog-Spannung vom Carrier-Board (5V) zum
+//       3,3V-ADC-Eingang des ESP32
+//       float wert = fMap(analogRead(A3), 0.0, 5.0, 0.0, 3.3);
+float fMap(float x, float x_min, float x_max, float y_min, float y_max)
+{
+  float y;
+  y = (y_max-y_min)/(x_max-x_min);
+  y = y *(x-x_min) + y_min;  
+
+  return y;
+}
+
+// CO2-Sensor EEE895
+//uint8_t i2cResponse[8];
 void eee895_init(void)
 {
   Wire.begin();

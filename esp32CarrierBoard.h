@@ -53,6 +53,12 @@ bool pinToggle(int pin, bool *toggleState);
 void  lm75_init(void);
 float lm75_read(void) ;
 
+// fMap: Zur Bereichsanpassung von float-Werten.
+// Bsp.: Mappen der Analog-Spannung vom Carrier-Board (5V) zum
+//       3,3V-ADC-Eingang des ESP32
+//       float wert = fMap(analogRead(A3), 0.0, 5.0, 0.0, 3.3);
+ float fMap(float x, float x_min, float x_max, float y_min, float y_max);
+
 // CO2-Sensor EEE895
 //uint8_t i2cResponse[8];
 
