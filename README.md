@@ -68,8 +68,10 @@ float  fMap(float x, float x_min, float x_max, float y_min, float y_max);
 ```
 
 ### Beschreibung:
-**fMap()** Führt eine Bereichsanpassung von float-Werten durch. 
-Ähnlich zur Arduino map()-Funktion, die eine Bereichsanpassung von Integer-Werten durchführt.
+**fMap()** Führt eine Bereichsanpassung von float-Werten, ähnlich zur Arduino map()-Funktion für Integer, durch.
+Benötigt wird die Funktion z.B. im Zusammenhang mit dem ADC-Eingang am Carrier-Board.
+Die 5V-ADC-Eingänge des Carrierboards werden durch einen Spannungsteiler auf max. 3,3V herunter geteilt. Benötigt man den exakten Spannungswert, muss man von 3.3V auf 5.0V hochrechnen.
+
 Parameter: 
 ```c
 float x:       Quellwert
@@ -85,7 +87,8 @@ float y_max:   Oberer Grenzwert Ziel
 void loop()
 {
   // Mappen des 5V ADC-Eingangs des Carrier-Boards auf 3,3V des ESP32
-  float wert = fMap(analogRead(A3), 0.0, 5.0, 0.0, 3.3);
+  // analogRead liefert max. 3,3V bei 5V Eingangsspannung am Carrier-Board
+  float spannung = fMap(analogRead(A3), 0.0, 3.3, 0.0, 5.0);
   Serial.print(spannung); Serial.println("V");
 }
 ```
