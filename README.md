@@ -61,6 +61,34 @@ void loop()
   float cTemp = lm75_read();
 }
 ```
+## Mapping von float-Werten
+### Prototypen:
+```c
+float  fMap(float x, float x_min, float x_max, float y_min, float y_max);
+```
+
+### Beschreibung:
+**fMap()** Führt eine Bereichsanpassung von float-Werten durch. 
+Ähnlich zur Arduino map()-Funktion, die eine Bereichsanpassung von Integer-Werten durchführt.
+Parameter: 
+```c
+float x:       Quellwert
+float x_min:   Unterer Grenzwert Quelle
+float x_max:   Oberer Grenzwert Quelle
+float y_min:   Unterer Grenzwert Ziel
+float y_max:   Oberer Grenzwert Ziel
+```
+
+### Beispiel:
+```c
+#include <esp32CarrierBoard.h>
+void loop()
+{
+  // Mappen des 5V ADC-Eingangs des Carrier-Boards auf 3,3V des ESP32
+  float wert = fMap(analogRead(A3), 0.0, 5.0, 0.0, 3.3);
+  Serial.print(spannung); Serial.println("V");
+}
+```
 
 ## EEE895-CO2-Sensor für CO2-Sensor-Ampel-Shield
 <img src="https://user-images.githubusercontent.com/24614659/234347802-9cfc7fbd-2dfb-4f09-8f7a-93c3eb24550e.jpg" alt="CO2-Sensor-Ampel" width="600">
