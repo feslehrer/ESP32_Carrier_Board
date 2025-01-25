@@ -22,8 +22,7 @@ void loop()
   Serial.print(wert);
   Serial.print(" -> ");
 
-  float spannung = Ulsb * wert;
-  spannung = fMap(spannung,0.0,3.3,0.0,5.0);
+  float spannung = fMap(Ulsb * wert, 0.0, 3.3, 0.0, 5.0);
   Serial.print(spannung); Serial.println("V");
   sprintf(buf,"U = %4.2fV",spannung);
   lcd.setCursor(0,1);lcd.print(buf);
