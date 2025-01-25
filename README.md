@@ -1,6 +1,6 @@
 # ESP32-Carrier-Board
 ## Funktionssammlung für ESP32-Carrier-Board
-<img src="https://user-images.githubusercontent.com/24614659/235747329-3b294437-124a-4d40-9fe2-bfb1395ae811.jpg" alt="ESP32-Carrier-Board" width="600">
+<img src="https://user-images.githubusercontent.com/24614659/235747329-3b294437-124a-4d40-9fe2-bfb1395ae811" alt="ESP32-Carrier-Board" width="600">
 https://www.ase-schlierbach.de
 
 ## Taster-Auswertung mit Entprellung
