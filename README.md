@@ -84,12 +84,17 @@ float y_max:   Oberer Grenzwert Ziel
 ### Beispiel:
 ```c
 #include <esp32CarrierBoard.h>
+// Spannungsauflösung des ADC
+const float Ulsb = 3.3/pow(2,12);
+char buf[17];
+
 void loop()
-{
-  // Mappen des 5V ADC-Eingangs des Carrier-Boards auf 3,3V des ESP32
-  // analogRead liefert max. 3,3V bei 5V Eingangsspannung am Carrier-Board
-  float spannung = fMap(analogRead(A3), 0.0, 3.3, 0.0, 5.0);
-  Serial.print(spannung); Serial.println("V");
+{ // Die Analogspannung wird vom Carrierboard von 5V auf 3.3V heruntergeteilt.
+  // Messen und Berechnen der Spannung und Bereichsanpassung 3.3V --> 5V.
+  float spannung = fMap(Ulsb * analogRead(A3), 0.0, 3.3, 0.0, 5.0);
+  sprintf(buf,"U = %4.2fV\n",spannung);
+  Serial.print(buf);
+  delay(200);
 }
 ```
 
