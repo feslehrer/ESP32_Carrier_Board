@@ -20,7 +20,7 @@ void setup()
   pinMode(LED,OUTPUT);
   digitalWrite(LED,HIGH);
   ledStatus = true;
-  attachInterrupt(tasterS3,toggleLED,FALLING);  
+  attachInterrupt(tasterS3,toggleLED,FALLING);
 }
 
 void loop() {}

@@ -1,13 +1,18 @@
+#include <esp32CarrierBoard.h>
 #include <LiquidCrystal_I2C.h>
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 const int B1_A = 14;
 const int B1_B = 4;
-const int RESET = 5;
-const int REF = 18;
-const int DIR = 19;
-const int PWM = 23;
+const int RESET = S1;
+const int DIR = S3;
+const int REF = S4;
+
+const int PWM_PIN = 23;
+const int PWM_FREQ = 1'000; 
+const int PWM_RESOLUTION = 12; 
+const int MAX_DUTY_CYCLE = (int)(pow(2, PWM_RESOLUTION) - 1);
 
 volatile int16_t counts = 0;
 
@@ -68,10 +73,7 @@ void setup()
   lcd.setCursor(0,1);
   lcd.print("Soll:");
 
-  // (Kanal, Frequenz, Auflösung)
-  ledcSetup(1, 500, 12);
-  // Pin mit Kanal verbinden      
-  ledcAttachPin(PWM, 1);
+  ledcAttach(PWM_PIN, PWM_FREQ, PWM_RESOLUTION);     //GPIO 12
   
   pinMode(B1_A,INPUT_PULLUP);
   pinMode(B1_B,INPUT_PULLUP);
@@ -138,12 +140,12 @@ float Regler( float w, float x, float kp)
 
   if(yp<15.0)        return 0.0;        // 
   else if(yp<1200.0) return 1200.0;     // Losbrechmoment überwinden!
-  else if(yp>4095.0) return 4095.0;     // Begrenzung  100%
+  else if(yp>MAX_DUTY_CYCLE) return MAX_DUTY_CYCLE;     // Begrenzung  100%
   else               return yp;
 }
 
 void setMotor( float y)
 {
-  if ( y == 0.0 )   ledcWrite(1,0);
-  else              ledcWrite(1,y);
+  if ( y == 0.0 )   ledcWrite(PWM_PIN,0);
+  else              ledcWrite(PWM_PIN,y);
 }
