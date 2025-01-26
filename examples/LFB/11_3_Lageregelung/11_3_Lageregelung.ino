@@ -10,7 +10,7 @@ const int DIR = S3;
 const int REF = S4;
 
 const int PWM_PIN = 23;
-const int PWM_FREQ = 1'000; 
+const int PWM_FREQ = 500; 
 const int PWM_RESOLUTION = 12; 
 const int MAX_DUTY_CYCLE = (int)(pow(2, PWM_RESOLUTION) - 1);
 
@@ -90,9 +90,12 @@ void loop()
 {
   float soll, ist, yr;
 
-  soll = analogRead(34) & 0x0ff8;        // 12-Bit: 0...4096
+  soll = analogRead(34) & 0x0ff0;        // 12-Bit: 0...4096
                                          // 3*LSB ausmaskiert 
-  soll = soll * 120.0 / 4095.0;
+  soll = soll * 120.0 / 4095.0;          // xmax = 120mm
+  //Runden auf Vielfache von 0,125mm = 4Q-Sensorauflösung
+  int ftemp = soll / 0.125;
+  soll = 0.125 * ftemp;
 
   ist = (float) counts;
   ist = ist / m;         //m Impulse pro mm
@@ -106,7 +109,7 @@ void loop()
   if(digitalRead(REF) == LOW)
   {
     digitalWrite(DIR,LINKS);
-    ledcWrite(1,4095);   // Full Speed Links
+    ledcWrite(PWM_PIN,MAX_DUTY_CYCLE);   // Full Speed Links
   }
   else
   {
