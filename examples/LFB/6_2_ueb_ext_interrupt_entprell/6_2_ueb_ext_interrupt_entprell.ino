@@ -1,5 +1,6 @@
-const int LED = 32;
-const int tasterS3 = 19;
+#include <esp32CarrierBoard.h>
+
+const int LED = D7;       //GPIO 32
 
 volatile uint32_t oldTime = 0;
 volatile bool ledStatus;
@@ -20,7 +21,7 @@ void setup()
   pinMode(LED,OUTPUT);
   digitalWrite(LED,HIGH);
   ledStatus = true;
-  attachInterrupt(tasterS3,toggleLED,FALLING);
+  attachInterrupt(S3,toggleLED,FALLING);
 }
 
 void loop() {}

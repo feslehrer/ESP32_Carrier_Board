@@ -33,6 +33,8 @@ void loop()
 float adcMap(float x, float x_min, float x_max, float y_min, float y_max)
 {
   float y;
+    //y = (y_max-y_min)/(x_max-x_min)*(x-x_min) + y_min; 
+     
   y = (y_max-y_min)/(x_max-x_min);
   y = y *(x-x_min) + y_min;  
 

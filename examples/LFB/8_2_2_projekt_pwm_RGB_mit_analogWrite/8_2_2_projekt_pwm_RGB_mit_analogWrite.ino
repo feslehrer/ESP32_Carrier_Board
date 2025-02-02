@@ -51,7 +51,7 @@ void loop()
       
       case 'e':
       case 'E':
-          analogWrite(redPin, red);              // RGB einschalten
+          analogWrite(redPin, red);          // RGB einschalten
           analogWrite(greenPin, green);
           analogWrite(bluePin, blue);
           break;
