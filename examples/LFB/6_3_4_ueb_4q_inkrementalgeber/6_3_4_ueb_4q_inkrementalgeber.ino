@@ -1,10 +1,11 @@
+#include <esp32CarrierBoard.h>
 #include <LiquidCrystal_I2C.h>
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-const int B1_A = 14;
-const int B1_B = 4;
-const int RESET = 5;
+const int B1_A = D2;   //GPIO 14
+const int B1_B = D3;   //GPIO 4
+const int RESET = S1;  //GPIO 5
 
 volatile int16_t counts = 0;
 float pos;

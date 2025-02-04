@@ -1,13 +1,14 @@
+#include <esp32CarrierBoard.h>
 #include <LiquidCrystal_I2C.h>
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-const int B1_A = 14;
-const int B1_B = 4;
-const int RESET = 5;
+const int B1_A  = D2; //GPIO 14
+const int B1_B  = D3; //GPIO 4
+const int RESET = S1; //GPIO 5
 
 volatile int16_t counts = 0;
-float pos;
+volatile int16_t turns = 0;
 
 void IRAM_ATTR channelA_isr(void)
 {
@@ -22,7 +23,7 @@ void setup()
   lcd.clear();
   lcd.print("counts: ");
   lcd.setCursor(0,1);
-  lcd.print("Pos:  ");
+  lcd.print("turns:  ");
   
   pinMode(B1_A,INPUT_PULLUP);
   pinMode(B1_B,INPUT_PULLUP);
@@ -35,13 +36,13 @@ void loop()
 {
   if (digitalRead(RESET) == LOW)
   {
-    counts = 0; pos = 0;
+    counts = 0; turns = 0;
   }
   lcd.setCursor(7,0);
   sprintf(buf,"%5d",counts);
   lcd.print(buf);
-  pos = (float)counts/2;      //2 Impulse pro mm
-  sprintf(buf,"%6.3f mm",pos);
+  turns = counts/24;      //24 Impulse pro Umdrehung
+  sprintf(buf,"%5d",turns);
   lcd.setCursor(7,1);
   lcd.print(buf);
 }
