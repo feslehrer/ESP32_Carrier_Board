@@ -1,8 +1,9 @@
+#include <esp32CarrierBoard.h>
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-const int B1_A = 14;
-const int B1_B = 4;
+const int B1_A  = D2; //GPIO 14
+const int B1_B  = D3; //GPIO 4
 
 volatile uint16_t counts = 0;
 uint16_t turns;
@@ -25,6 +26,8 @@ void setup()
   pinMode(B1_B,INPUT_PULLUP);
   attachInterrupt(B1_A,channelA_isr,FALLING);  
 }
+
+char buf[10];
 
 void loop() 
 {
