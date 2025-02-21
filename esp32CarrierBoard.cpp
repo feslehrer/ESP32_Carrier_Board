@@ -34,10 +34,10 @@ bool pinToggle(int pin, bool *toggleState)
   return pinState;
 }
 
-void lm75_init(void)
+void lm75_init(byte _i2_adress_)
 {
   Wire.begin();
-  Wire.beginTransmission(SensorAdresse);  
+  Wire.beginTransmission(_i2_adress_);  
   Wire.write(0);       
   Wire.endTransmission();  
 }
@@ -45,11 +45,11 @@ void lm75_init(void)
 // lm75_read:  Liest den Temperaturwert vom LM75 auf dem Carrier_Board
 //      Rückgabewert: Temperaturwert als float -55.0 ... +125.0 (°C)
 //      Die Auflösung beträgt 0,5°C
-float lm75_read(void) 
+float lm75_read(byte _i2_adress_) 
 {
   byte msb=0, lsb=0, msb1=0;
   
-  Wire.requestFrom(SensorAdresse, 2); 
+  Wire.requestFrom(_i2_adress_, 2); 
   if (Wire.available()) 
   {
      msb1 = Wire.read();

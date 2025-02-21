@@ -17,7 +17,7 @@
 #define TASTERPINS {5,23,19,18}     // Tasterpins am ESP32-Carrier-Board
 #define PINANZAHL   4               // muss mit der Anzahl der Tasterpins übereinstimmen.
 
-#define SensorAdresse 0x48      // I2C-Adresse fuer LM75 auf dem Carrier-Board
+#define lm75Adresse   0x48      // I2C-Adresse fuer LM75 auf dem Carrier-Board
 #define eee895Adresse 0x5E      // I2C-Adresse EE895 (simplified protocol)
 
 // Funktionsprototypen
@@ -50,8 +50,8 @@ bool pinToggle(int pin, bool *toggleState);
 
 //lm75_read
 // Gibt den Temperaturwert vom LM75 auf dem Carrier-Board zurück
-void  lm75_init(void);
-float lm75_read(void) ;
+void  lm75_init(byte _i2_adress_);
+float lm75_read(byte _i2_adress_) ;
 
 // fMap: Zur Bereichsanpassung von float-Werten.
 // Bsp.: Mappen der Analog-Spannung vom Carrier-Board (5V) zum
@@ -99,5 +99,7 @@ float eee895_readTemp(void);
 #define S4  18
 #define SPEAKER 27
 #define BACKLIGHT 2
+#define POTI A3
+#define LDR  A3 
 
 #endif

@@ -1,16 +1,15 @@
+#include <esp32CarrierBoard.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 const int Input1 = 14;  // L298-Motortreiber: Input1
 const int Input2 = 5;   //                    Input2
-const int enableA = 18; //                    EnableA  (pwm-Pin)
-const int RaupeLinks = 0;
+const int RaupeLinks = 18; //                 EnableA  (pwm-Pin)
 
-const int Input3 = 23; // L298-Motortreiber: Input3
-const int Input4 = 19; //                    Input4
-const int enableB = 4; //                    EnableB  (pwm-Pin)
-const int RaupeRechts = 1;
+const int Input3 = 23;  // L298-Motortreiber: Input3
+const int Input4 = 19;  //                    Input4
+const int RaupeRechts = 4; //                 EnableB  (pwm-Pin)
 
 const int IRR = 32;
 const int IRM = 10;
@@ -64,14 +63,12 @@ void setup()
   digitalWrite(Input4, 0); // Motor aus
 
   // PWM-Initialisieren für Motor Links
-  ledcSetup(RaupeLinks, 1000, 8);     // PWM initialisieren: Kanal 0, 1kHz, 8 Bit
-  ledcAttachPin(enableA, RaupeLinks); // PWM-Pin initialisieren: enableA=Pin 18, Kanal 0
-  ledcWrite(RaupeLinks, 0);           // PWM-Tastgrad: Kanal 0, g = 0
+  ledcAttach(RaupeLinks,1000,8);        // PWM-Links initialisieren: RaupeLinks=Pin 18, 1kHz, 8 Bit
+  ledcWrite(RaupeLinks, 0);             // PWM-Tastgrad: g = 0
 
   // PWM-Initialisieren für Motor Rechts
-  ledcSetup(RaupeRechts, 1000, 8);     // PWM initialisieren: Kanal 1, 1kHz, 8 Bit
-  ledcAttachPin(enableB, RaupeRechts); // PWM-Pin initialisieren: enableB=Pin 4, Kanal 1
-  ledcWrite(RaupeRechts, 0);           // PWM-Tastgrad: Kanal 1, g = 0
+  ledcAttach(RaupeRechts,1000,8);       // PWM-Rechts initialisieren: RaupeRechts=Pin 4, 1 kHz, 8 Bit
+  ledcWrite(RaupeRechts, 0);           // PWM-Tastgrad: g = 0
 }
 
 byte rSpeed;
