@@ -39,13 +39,13 @@ kann als Schaltsignal ausgewertet werden.
 ## LM75-Temperatursensor (I²C)
 ### Prototypen:
 ```c
-void  lm75_init(void);
-float lm75_read(void);
+void  lm75_init(byte i2c_adresse);
+float lm75_read(byte i2c_adresse);
 ```
 
 ### Beschreibung:
 **lm75_read()** liefert den Temperaturwert des auf dem Carrier-Board verbauten LM75-Temperatursensors als float-Wert -55 ... 125°C zurück.
-Die i2c_adresse ist 0x48 und in der Konstanten **SensorAdresse** definiert. 
+Die i2c_adresse ist 0x48 und in der Konstanten **lm75Adresse** definiert.
 **lm75_init()** muss 1 mal in der **setup()** aufgerufen werden.
 
 ### Beispiel:
@@ -53,12 +53,12 @@ Die i2c_adresse ist 0x48 und in der Konstanten **SensorAdresse** definiert.
 #include <esp32CarrierBoard.h>
 void setup()
 {
-  lm75_init();
+  lm75_init(lm75Adresse);
 }
 
 void loop()
 {
-  float cTemp = lm75_read();
+  float cTemp = lm75_read(lm75Adresse);
 }
 ```
 ## Mapping von float-Werten
