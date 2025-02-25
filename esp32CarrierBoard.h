@@ -10,15 +10,51 @@
 #define _ESP32CARRIERBOARD_H_
 #include "Arduino.h"
 
-#define PRESS   LOW            // Symbol für gedrückten Taster
-                               // LOW = Nullaktiv, HIGH = Einsaktiv                   
-#define DEBOUNCETIME 50        // Hier die Entprellzeit in ms
+#define PRESS    LOW            // Symbol für gedrückten Taster
+#define RELEASED HIGH           // LOW = Nullaktiv, HIGH = Einsaktiv
+#define ON		 LOW			// Symbol für Ausgangssignal (z.B. LED)
+#define OFF		 HIGH			// Nullaktiv: ON = LOW, OFF = HIGH
+							   
+#define DEBOUNCETIME 50         // Hier die Entprellzeit in ms
 
-#define TASTERPINS {5,23,19,18}     // Tasterpins am ESP32-Carrier-Board
-#define PINANZAHL   4               // muss mit der Anzahl der Tasterpins übereinstimmen.
+#define TASTERPINS {5,23,19,18} // Tasterpins am ESP32-Carrier-Board
+#define PINANZAHL   4           // muss mit der Anzahl der Tasterpins übereinstimmen.
 
 #define lm75Adresse   0x48      // I2C-Adresse fuer LM75 auf dem Carrier-Board
 #define eee895Adresse 0x5E      // I2C-Adresse EE895 (simplified protocol)
+
+// Pindefinitionen
+#define D0 9
+#define D1 10
+#define D2 14
+#define D3 4
+#define D4 33
+#define D5 15
+#define D6 13
+#define D7 32
+#define D8 2
+#define D9 27
+#define D10 5
+#define D11 23
+#define D12 19
+#define D13 18
+#define A0 38			// A0...A3 sind ausschließlich als
+#define A1 37			// Analogeingänge nutzbar !!
+#define A2 35
+#define A3 34
+//#define A4 36			// Nur als Binäre Inputs zu verwenden !!
+//#define A5 39			// dito.
+
+#define LED_BUILDIN 12
+
+#define S1  5
+#define S2  23
+#define S3  19
+#define S4  18
+#define SPEAKER 27
+#define BACKLIGHT 2
+#define POTI A3
+#define LDR  A3 
 
 // Funktionsprototypen
 //--------------------------------------------------------------------
@@ -69,37 +105,5 @@ uint16_t eee895_readCO2(void);
 uint16_t eee895_readPressure(void);
 float eee895_readTemp(void);
 
-// Pindefinitionen
-#define D0 9
-#define D1 10
-#define D2 14
-#define D3 4
-#define D4 33
-#define D5 15
-#define D6 13
-#define D7 32
-#define D8 2
-#define D9 27
-#define D10 5
-#define D11 23
-#define D12 19
-#define D13 18
-#define A0 38
-#define A1 37
-#define A2 35
-#define A3 34
-#define A4 36
-#define A5 39
-
-#define LED_BUILDIN 12
-
-#define S1  5
-#define S2  23
-#define S3  19
-#define S4  18
-#define SPEAKER 27
-#define BACKLIGHT 2
-#define POTI A3
-#define LDR  A3 
 
 #endif
