@@ -11,7 +11,7 @@
 #include "Arduino.h"
 
 #define PRESS    LOW            // Symbol für gedrückten Taster
-#define RELEASED HIGH           // LOW = Nullaktiv, HIGH = Einsaktiv
+#define RELEASE HIGH           // LOW = Nullaktiv, HIGH = Einsaktiv
 #define ON		 LOW			// Symbol für Ausgangssignal (z.B. LED)
 #define OFF		 HIGH			// Nullaktiv: ON = LOW, OFF = HIGH
 							   
