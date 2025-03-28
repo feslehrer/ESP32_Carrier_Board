@@ -98,7 +98,7 @@ void loop()
   soll = 0.125 * ftemp;
 
   ist = (float) counts;
-  ist = ist / m;         //m Impulse pro mm
+  ist = ist / m;         //m: counts pro mm
 
   if (digitalRead(RESET) == LOW)
   {
