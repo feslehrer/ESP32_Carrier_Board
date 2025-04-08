@@ -6,6 +6,7 @@
 int pins[] = TASTERPINS;            // ESP32-Carrier-Board Tasterpins
 uint64_t oldTime[PINANZAHL];        // PINANZAHL muss mit der Anzahl der Tasterpins
                                     // übereinstimmen (in esp32CarrierBoard.h).
+bool oldState[PINANZAHL];
 
 // pinToggle:  Schalten und Entprellen von Tastern
 //         pin: Pinnummer des Input-Pins
@@ -19,17 +20,19 @@ bool pinToggle(int pin, bool *toggleState)
   for (i=0; i<PINANZAHL; i++)
     if(pins[i]== pin) break;
     
-  bool pinState = !PRESS;
+  bool pinState = RELEASE;
   uint64_t newTime = millis();
-  
-  if (digitalRead(pin) == PRESS)
+  bool newState = digitalRead(pin);
+
+  if (newState == PRESS) && (newState != oldState[i]))
   {
     if(newTime - oldTime[i] > DEBOUNCETIME)
     {
       *toggleState = !*toggleState;
       pinState = PRESS;
     }
-    oldTime[i] = newTime;
+    oldState[i] = newState;
+    oldTime[i]  = newTime;
   }
   return pinState;
 }
