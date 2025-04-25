@@ -18,24 +18,23 @@ bool pinToggle(int pin, bool *toggleState)
   int i;
   
   for (i=0; i<PINANZAHL; i++)
-    if(pins[i]== pin) break;
+  { if(pins[i]== pin) break;}
     
-  bool pinState = RELEASE;
   uint64_t newTime = millis();
   bool newState = digitalRead(pin);
 
-  if (newState == PRESS) && (newState != oldState[i]))
+  if ((newState == PRESS) && (newState != oldState[i]))
   {
     if(newTime - oldTime[i] > DEBOUNCETIME)
     {
       *toggleState = !*toggleState;
-      pinState = PRESS;
     }
     oldState[i] = newState;
     oldTime[i]  = newTime;
   }
   return pinState;
 }
+
 
 void lm75_init(byte _i2_adress_)
 {
