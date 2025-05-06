@@ -12,27 +12,29 @@ bool oldState[PINANZAHL];
 //         pin: Pinnummer des Input-Pins
 //         toggleState:   Schaltzustand des Toggle-Glieds (entprellt)
 //         debounceTimer: Zeit der letzten Flankenerkennung
-//      Rückgabewert: Tastersignal entprellt
-bool pinToggle(int pin, bool *toggleState) 
+//    Rückgabewert: Tastersignal entprellt
+bool pinToggle(int pin, bool *toggleState)
 {
   int i;
-  
+  bool pinState=RELEASE;
+
   for (i=0; i<PINANZAHL; i++)
   { if(pins[i]== pin) break;}
     
   uint64_t newTime = millis();
   bool newState = digitalRead(pin);
-
+	
   if ((newState == PRESS) && (newState != oldState[i]))
   {
     if(newTime - oldTime[i] > DEBOUNCETIME)
     {
       *toggleState = !*toggleState;
+	  pinState = PRESS;
     }
-    oldState[i] = newState;
-    oldTime[i]  = newTime;
+	oldTime[i]  = newTime;
   }
-  return toggleState;
+  oldState[i] = newState;
+  return pinState;
 }
 
 

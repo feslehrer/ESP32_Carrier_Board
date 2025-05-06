@@ -42,7 +42,9 @@ void loop()
   {
     if(count!=0) count--;
   }
-
+  lcd.setCursor(0,0);
+  lcd.print(toggleStateUP,BIN);
+  lcd.print(toggleStateDOWN,BIN);
   if(digitalRead(CLEAR) == PRESS)
     count=0;
 
