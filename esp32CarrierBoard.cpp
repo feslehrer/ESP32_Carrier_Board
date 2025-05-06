@@ -32,7 +32,7 @@ bool pinToggle(int pin, bool *toggleState)
     oldState[i] = newState;
     oldTime[i]  = newTime;
   }
-  return pinState;
+  return toggleState;
 }
 
 
