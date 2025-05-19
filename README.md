@@ -19,7 +19,6 @@ kann als Schaltsignal ausgewertet werden.
 ### Beispiel: 
 ```c
   #include <esp32CarrierBoard.h>
-  bool toggleStateS3;
   const int TasterS3 = 19;
 
   void setup()
@@ -28,6 +27,7 @@ kann als Schaltsignal ausgewertet werden.
   }
 
   uint16_t count = 0;
+  bool toggleStateS3;
 
   void loop()
   {
