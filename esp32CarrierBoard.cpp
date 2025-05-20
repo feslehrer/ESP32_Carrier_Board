@@ -3,10 +3,10 @@
 #include "Arduino.h"
 #include <Wire.h>
 
-int pins[] = TASTERPINS;            // ESP32-Carrier-Board Tasterpins
-uint64_t oldTime[PINANZAHL];        // PINANZAHL muss mit der Anzahl der Tasterpins
+int _pins_[] = TASTERPINS;            // ESP32-Carrier-Board Tasterpins
+uint64_t _oldTime_[PINANZAHL];        // PINANZAHL muss mit der Anzahl der Tasterpins
                                     // übereinstimmen (in esp32CarrierBoard.h).
-bool oldState[PINANZAHL];
+bool _oldState_[PINANZAHL];
 
 // pinToggle:  Schalten und Entprellen von Tastern
 //         pin: Pinnummer des Input-Pins
@@ -19,21 +19,21 @@ bool pinToggle(int pin, bool *toggleState)
   bool pinState=RELEASE;
 
   for (i=0; i<PINANZAHL; i++)
-  { if(pins[i]== pin) break;}
+  { if(_pins_[i]== pin) break;}
     
   uint64_t newTime = millis();
   bool newState = digitalRead(pin);
 	
-  if ((newState == PRESS) && (newState != oldState[i]))
+  if ((newState == PRESS) && (newState != _oldState_[i]))
   {
-    if(newTime - oldTime[i] > DEBOUNCETIME)
+    if(newTime - _oldTime_[i] > DEBOUNCETIME)
     {
       *toggleState = !*toggleState;
 	  pinState = PRESS;
     }
-	oldTime[i]  = newTime;
+	_oldTime_[i]  = newTime;
   }
-  oldState[i] = newState;
+  _oldState_[i] = newState;
   return pinState;
 }
 
