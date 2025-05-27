@@ -19,19 +19,18 @@ kann als Schaltsignal ausgewertet werden.
 ### Beispiel: Taster One-Shot = Ein Impuls pro Tastendruck
 ```c
   #include <esp32CarrierBoard.h>
-  const int TasterS3 = 19;
 
   void setup()
   { 
-    pinMode(TasterS3,INPUT_PULLUP);
+    pinMode(S3,INPUT_PULLUP);
   }
 
   uint16_t count = 0;
-  bool toggleStateS3;
+  bool toggleState;
 
   void loop()
   {
-    if(pinToggle(TasterS3, &toggleStateS3) == PRESS)
+    if(pinToggle(S3, &toggleState) == PRESS)
       count++;  
   }
  ```
