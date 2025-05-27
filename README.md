@@ -87,7 +87,7 @@ float  fMap(float x, float x_min, float x_max, float y_min, float y_max);
 ```
 
 ### Beschreibung:
-**fMap()** Führt eine Bereichsanpassung von float-Werten duch (ähnlich zur Arduino map()-Funktion für Integer).
+**fMap()** Führt eine Bereichsanpassung von float-Werten durch (ähnlich zur Arduino map()-Funktion für Integer).
 Benötigt wird die Funktion z.B. im Zusammenhang mit dem ADC-Eingang am Carrier-Board.
 Die 5V-ADC-Eingänge des Carrierboards werden durch einen Spannungsteiler auf max. 3,3V herunter geteilt. Benötigt man den exakten Spannungswert, muss man von 3.3V auf 5.0V hochrechnen.
 <br><img src="https://github.com/user-attachments/assets/071cf5d9-c507-4c24-8229-96e981d160d2" alt="Kennlinie" width="300">
