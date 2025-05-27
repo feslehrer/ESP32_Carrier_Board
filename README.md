@@ -12,11 +12,11 @@ bool pinToggle(int pin, bool *toggleState);
 
 ### Beschreibung:
 **pinToggle()** wertet einen Tastendruck (polling) am pin aus und
-liefert ein entprelltes Tastersignal zurück.
+liefert ein entprelltes Tastersignal (One-Shot) zurück.
 Die Variable **toggleState** muss als Zeiger übergeben werden und
 kann als Schaltsignal ausgewertet werden.
 
-### Beispiel: 
+### Beispiel: Taster One-Shot = Ein Impuls pro Tastendruck
 ```c
   #include <esp32CarrierBoard.h>
   const int TasterS3 = 19;
@@ -35,7 +35,29 @@ kann als Schaltsignal ausgewertet werden.
       count++;  
   }
  ```
+### Beispiel: Taster als (entprellten) Schalter
+```c
+  #include <esp32CarrierBoard.h>
+  const int TasterS3 = 19;
 
+  void setup()
+  { 
+    pinMode(TasterS3,INPUT_PULLUP);
+    pinMode(LED_BUILDIN,OUTPUT);
+  }
+
+  uint16_t count = 0;
+  bool toggleStateS3;
+
+  void loop()
+  {
+    pinToggle(TasterS3, &toggleStateS3);
+    if( toggleStateS3 == ON)
+      digitalWrite(LED_BUILDIN,ON);
+    else
+      digitalWrite(LED_BUILDIN,OFF);  
+  }
+ ```
 ## LM75-Temperatursensor (I²C)
 ### Prototypen:
 ```c
