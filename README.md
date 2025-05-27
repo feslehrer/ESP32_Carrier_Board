@@ -38,21 +38,19 @@ kann als Schaltsignal ausgewertet werden.
 ### Beispiel: Taster als (entprellten) Schalter
 ```c
   #include <esp32CarrierBoard.h>
-  const int TasterS3 = 19;
 
   void setup()
   { 
-    pinMode(TasterS3,INPUT_PULLUP);
+    pinMode(S4,INPUT_PULLUP);
     pinMode(LED_BUILDIN,OUTPUT);
   }
 
-  uint16_t count = 0;
-  bool toggleStateS3;
+  bool toggleState;
 
   void loop()
   {
-    pinToggle(TasterS3, &toggleStateS3);
-    if( toggleStateS3 == ON)
+    pinToggle(S4, &toggleState);
+    if( toggleState == ON)
       digitalWrite(LED_BUILDIN,ON);
     else
       digitalWrite(LED_BUILDIN,OFF);  
