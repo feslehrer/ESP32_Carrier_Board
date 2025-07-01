@@ -30,20 +30,15 @@ uint16_t count = 0;
 
 void loop() 
 {
-  char buf[6];
-  sprintf(buf, "%5u", count);                                         // Für Rechtsbündige Darstellung im Display
   lcd.setCursor(8,1);
-  lcd.print(buf);
+  lcd.printf("%5u", count);
 
   if(pinToggle(COUNTUP, &toggleStateUP) == PRESS)
     count++;
 
   if(pinToggle(COUNTDOWN, &toggleStateDOWN) == PRESS)
-  {
     if(count!=0) count--;
-  }
-  
+    
   if(digitalRead(CLEAR) == PRESS)
     count=0;
-
 }

@@ -6,6 +6,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);    // I2C-Display: adresse 0x27, 2 Zeilen á
 #define PRESS LOW
 const int S4_CLEAR = 18;
 const int S3_COUNT = 19;
+const int S2_COUNTDOWN = 23;
 uint32_t  oldTime;                     // Debounce-Zeitmerker
 
 void setup()
@@ -20,6 +21,7 @@ void setup()
   lcd.print("Anzahl:");
   
   pinMode(S3_COUNT,INPUT_PULLUP);
+  pinMode(S2_COUNTDOWN,INPUT_PULLUP);
   pinMode(S4_CLEAR,INPUT_PULLUP);
 }
 
@@ -27,10 +29,8 @@ uint16_t count = 0;
 
 void loop() 
 {
-  char buf[6];
-  sprintf(buf, "%5u", count);
   lcd.setCursor(8,1);
-  lcd.print(buf);
+  lcd.printf("%5u", count);
 
   uint32_t newTime = millis();
   
@@ -38,6 +38,14 @@ void loop()
   {
     if(newTime - oldTime > 50)
       count++;
+    oldTime = newTime;
+  }
+  if(digitalRead(S2_COUNTDOWN) == PRESS)
+  {
+    if(newTime - oldTime > 50)
+    {
+      if (count>0)  count--;
+    }
     oldTime = newTime;
   }
 

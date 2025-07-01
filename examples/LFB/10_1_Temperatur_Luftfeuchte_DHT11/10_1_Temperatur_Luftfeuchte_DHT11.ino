@@ -12,15 +12,25 @@ void setup()
   lcd.init();
   lcd.clear();
   dht.begin();
+  Serial.begin(9600);
 }
 
 void loop() 
 {
-  int hum = dht.readHumidity();
-  int temp = dht.readTemperature();
+  float hum  = dht.readHumidity();
+  float temp = dht.readTemperature();
  
+  // lcd.setCursor(0,0);
+  // lcd.print("Temp:    ");lcd.print(temp);lcd.print("\337");lcd.print("C");
+  // lcd.setCursor(0,1);
+  // lcd.print("Feuchte: ");lcd.print(hum);lcd.print("%");
+
   lcd.setCursor(0,0);
-  lcd.print("Temp:    ");lcd.print(temp);lcd.print("\337");lcd.print("C");
+  lcd.printf("Temp:   %4.1f\337C",temp);
   lcd.setCursor(0,1);
-  lcd.print("Feuchte: ");lcd.print(hum);lcd.print("%");
+  lcd.printf("Feuchte: %3.0f%%",hum);
+
+  Serial.printf("Temp:   %4.1f°C\n",temp);
+  Serial.printf("Feuchte: %3.0f%%\n",hum);
+  delay(500);
 }
