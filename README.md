@@ -12,30 +12,49 @@ bool pinToggle(int pin, bool *toggleState);
 
 ### Beschreibung:
 **pinToggle()** wertet einen Tastendruck (polling) am pin aus und
-liefert ein entprelltes Tastersignal zurück.
+liefert ein entprelltes Tastersignal (One-Shot) zurück.
 Die Variable **toggleState** muss als Zeiger übergeben werden und
 kann als Schaltsignal ausgewertet werden.
 
-### Beispiel: 
+### Beispiel: Taster One-Shot = Ein Impuls pro Tastendruck
 ```c
   #include <esp32CarrierBoard.h>
-  const int TasterS3 = 19;
 
   void setup()
   { 
-    pinMode(TasterS3,INPUT_PULLUP);
+    pinMode(S3,INPUT_PULLUP);
   }
 
   uint16_t count = 0;
-  bool toggleStateS3;
+  bool toggleState;
 
   void loop()
   {
-    if(pinToggle(TasterS3, &toggleStateS3) == PRESS)
+    if(pinToggle(S3, &toggleState) == PRESS)
       count++;  
   }
  ```
+### Beispiel: Taster als (entprellten) Schalter
+```c
+  #include <esp32CarrierBoard.h>
 
+  void setup()
+  { 
+    pinMode(S4,INPUT_PULLUP);
+    pinMode(LED_BUILDIN,OUTPUT);
+  }
+
+  bool toggleState;
+
+  void loop()
+  {
+    pinToggle(S4, &toggleState);
+    if( toggleState == ON)
+      digitalWrite(LED_BUILDIN,ON);
+    else
+      digitalWrite(LED_BUILDIN,OFF);  
+  }
+ ```
 ## LM75-Temperatursensor (I²C)
 ### Prototypen:
 ```c
@@ -68,7 +87,7 @@ float  fMap(float x, float x_min, float x_max, float y_min, float y_max);
 ```
 
 ### Beschreibung:
-**fMap()** Führt eine Bereichsanpassung von float-Werten, ähnlich zur Arduino map()-Funktion für Integer, durch.
+**fMap()** Führt eine Bereichsanpassung von float-Werten durch (ähnlich zur Arduino map()-Funktion für Integer).
 Benötigt wird die Funktion z.B. im Zusammenhang mit dem ADC-Eingang am Carrier-Board.
 Die 5V-ADC-Eingänge des Carrierboards werden durch einen Spannungsteiler auf max. 3,3V herunter geteilt. Benötigt man den exakten Spannungswert, muss man von 3.3V auf 5.0V hochrechnen.
 <br><img src="https://github.com/user-attachments/assets/071cf5d9-c507-4c24-8229-96e981d160d2" alt="Kennlinie" width="300">
@@ -84,16 +103,14 @@ float y_max:   Oberer Grenzwert Ziel
 ### Beispiel:
 ```c
 #include <esp32CarrierBoard.h>
-// Spannungsauflösung des ADC
-const float Ulsb = 3.3/pow(2,12);
-char buf[17];
+
+const float Ulsb = 3.3/pow(2,12);       // Spannungsauflösung des ADC
 
 void loop()
 { // Die Analogspannung wird vom Carrierboard von 5V auf 3.3V heruntergeteilt.
-  // Messen und Berechnen der Spannung und Bereichsanpassung 3.3V --> 5V.
+  // Messen und Berechnen der Spannung mit Bereichsanpassung 3.3V --> 5V.
   float spannung = fMap(Ulsb * analogRead(A3), 0.0, 3.3, 0.0, 5.0);
-  sprintf(buf,"U = %4.2fV\n",spannung);
-  Serial.print(buf);
+  Serial.printf("U = %4.2fV\n",spannung);
   delay(200);
 }
 ```
