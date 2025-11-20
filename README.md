@@ -16,7 +16,7 @@ liefert ein entprelltes Tastersignal (One-Shot) zurück.
 Die Variable **toggleState** muss als Zeiger übergeben werden und
 kann als Schaltsignal ausgewertet werden.
 
-### Beispiel: Taster One-Shot = Ein Impuls pro Tastendruck
+### Beispiel: Taster One-Shot = Ein Impuls pro Tastendruck (steigende Flanke)
 ```c
   #include <esp32CarrierBoard.h>
 
